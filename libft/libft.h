@@ -113,3 +113,4 @@ void	ft_lstadd_toend(t_list **alst, t_list *new);
 /*doubly linked lists job*/
 d_list	*ft_doubly_linked_lstnew(void const *content, size_t content_size);
 void	ft_doubly_linked_lstadd_toend(d_list** head_ref, d_list *new_node);
+

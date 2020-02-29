@@ -81,6 +81,7 @@ int    read_file(char *filename, fdf *data)
     int     i;
 
     fd = 0;
+    init_fdf(data);
     if( access( filename, F_OK ) == -1 )
         return (-1);
     data->height = get_height(filename);
@@ -88,7 +89,6 @@ int    read_file(char *filename, fdf *data)
     if (!(data->z_matrix = (int **)malloc(sizeof(int*) * (data->height + 1))))
         return (-1);
     i = 0;
-    init_fdf(data);
     while (i <= data->height)
     {
         if (!(data->z_matrix[i++] = (int*)malloc(sizeof(int) * (data->width + 1))))

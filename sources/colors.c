@@ -17,8 +17,8 @@ double	percent(int start, int end, int current)
 	double	placement;
 	double	distance;
 
-	placement = current - start;
-	distance = end - start;
+	placement = MOD(current - start);
+	distance = MOD(end - start);
 	return ((distance == 0) ? 1.0 : (placement / distance));
 }
 
@@ -36,7 +36,6 @@ int     get_color_brutal(int z, fdf *data)
     else
         return (0x004C99);
 }
-
 
 int     get_color_barbie(int z, fdf *data)
 {

@@ -51,7 +51,7 @@ int main(int argc, char **argv)
         mlx_key_hook(data->win_ptr, tap, data);
         mlx_loop(data->mlx_ptr);
         free_2darr_int(data->z_matrix); 
-        free(data);
+        //free(data);
     }
     terminate("Usage: ./fdf MAP_FILE");
     system("leaks checker");

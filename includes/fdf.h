@@ -62,5 +62,11 @@ int     tap(int key, fdf *data);
 int     get_color_barbie(int z, fdf *data);
 int     get_color_brutal(int z, fdf *data);
 void	terminate(char *s);
+int     ft_isnumber(char *n);
+void    rotation_alpha(float *y, int z, fdf *data);
+void    rotation_beta(float *x, int z, fdf *data);
+void    rotation_gamma(float *x, float *y, fdf *data);
+void    zoom(float *x, float *y, float *x1, float *y1, fdf *data);
+void    shift(float *x, float *y, float *x1, float *y1, fdf *data);
 
 #endif

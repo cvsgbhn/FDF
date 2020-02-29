@@ -3,7 +3,7 @@
 NAME = fdf
 
 CC = gcc
-FLAGS = -Wall -Werror -Wextra -O3
+FLAGS = -Wall -Wextra -Werror -O3 
 LIBRARIES = -lmlx -lm -lft -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 
@@ -27,6 +27,7 @@ SOURCES_LIST += keys.c
 SOURCES_LIST += colors.c
 SOURCES_LIST += validator.c
 SOURCES_LIST += change_map.c
+SOURCES_LIST += points.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = objects/

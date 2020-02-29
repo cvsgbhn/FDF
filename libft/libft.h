@@ -6,7 +6,7 @@
 /*   By: vdanilo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:18:08 by vdanilo           #+#    #+#             */
-/*   Updated: 2020/01/22 19:04:10 by vdanilo          ###   ########.fr       */
+/*   Updated: 2020/02/29 22:45:24 by vdanilo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,8 +109,3 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int		ft_lstlength(t_list *lst);
 void	ft_lstadd_toend(t_list **alst, t_list *new);
 #endif
-
-/*doubly linked lists job*/
-d_list	*ft_doubly_linked_lstnew(void const *content, size_t content_size);
-void	ft_doubly_linked_lstadd_toend(d_list** head_ref, d_list *new_node);
-

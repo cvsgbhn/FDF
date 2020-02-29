@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_file.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vdanilo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/29 13:12:38 by vdanilo           #+#    #+#             */
+/*   Updated: 2020/02/29 13:12:42 by vdanilo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void    fill_matrix(int *z_line, char *line, fdf *data)
@@ -50,21 +62,38 @@ int     get_width(char *file_name)
     return (width);
 }
 
-void    read_file(char *filename, fdf *data)
+void    init_fdf(fdf *data)
+{
+    data->z_max = 0;
+    data->z_min = 0;
+    data->shift_x = 150;
+    data->shift_y = 150;
+    data->vroom = 2;
+    data->alpha = 0;
+    data->beta = 0;
+    data->gamma = 0;
+}
+
+int    read_file(char *filename, fdf *data)
 {
     int     fd;
     char    *line;
     int     i;
 
     fd = 0;
+    if( access( filename, F_OK ) == -1 )
+        return (-1);
     data->height = get_height(filename);
     data->width = get_width(filename);
-    data->z_matrix = (int **)malloc(sizeof(int*) * (data->height + 1));
+    if (!(data->z_matrix = (int **)malloc(sizeof(int*) * (data->height + 1))))
+        return (-1);
     i = 0;
-    data->z_max = 0;
-    data->z_min = 0;
+    init_fdf(data);
     while (i <= data->height)
-        data->z_matrix[i++] = (int*)malloc(sizeof(int) * (data->width + 1));
+    {
+        if (!(data->z_matrix[i++] = (int*)malloc(sizeof(int) * (data->width + 1))))
+            return (-1);
+    }
     fd = open(filename, O_RDONLY, 0);
     i = 0;
     while (get_next_line(fd, &line))
@@ -75,7 +104,5 @@ void    read_file(char *filename, fdf *data)
     }
     close(fd);
     data->z_matrix[i] = NULL;
-    data->shift_x = 150;
-    data->shift_y = 150;
-    data->vroom = 2;
+    return 0;
 }

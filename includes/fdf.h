@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vdanilo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/29 13:13:31 by vdanilo           #+#    #+#             */
+/*   Updated: 2020/02/29 13:13:33 by vdanilo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef UNTITLED_FDF_H
 #define UNTITLED_FDF_H
 
@@ -9,6 +21,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <math.h>
+#include <errno.h>
 
 #define MAX(a, b) (a > b ? a : b)
 #define MIN(a,b) (a <= b ? a : b)
@@ -36,7 +49,7 @@ typedef struct
     void    *win_ptr;
 }           fdf;
 
-void    read_file(char *filename, fdf *data);
+int     read_file(char *filename, fdf *data);
 void    bresenham(float x, float y, float x1, float y1, fdf *data);
 void    draw(fdf *data);
 void    isometric(float *x, float *y, int z);
@@ -46,5 +59,8 @@ void     tap_shift(int key, fdf *data);
 void     tap_zoom(int key, fdf *data);
 void    tap_esc(int key);
 int     tap(int key, fdf *data);
+int     get_color_barbie(int z, fdf *data);
+int     get_color_brutal(int z, fdf *data);
+void	terminate(char *s);
 
 #endif

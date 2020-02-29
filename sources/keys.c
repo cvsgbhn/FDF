@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keys.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vdanilo <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/29 13:11:41 by vdanilo           #+#    #+#             */
+/*   Updated: 2020/02/29 13:11:43 by vdanilo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/fdf.h"
 
 void    tap_color(int key, fdf *data)
@@ -61,7 +73,7 @@ void    tap_shift(int key, fdf *data)
 void     tap_zoom(int key, fdf *data) {
     if (key == 69)
         data->zoom *= 2;
-    if (key == 78)
+    if (key == 78 && data->zoom >= 2)
         data->zoom /= 2;
 }
 
@@ -84,7 +96,6 @@ int     tap(int key, fdf *data)
     tap_esc(key);
     mlx_clear_window(data->mlx_ptr, data->win_ptr);
     draw(data);
-    printf("%d\n", key);
     return (0);
 }
 

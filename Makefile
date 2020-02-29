@@ -24,6 +24,7 @@ SOURCES_LIST = main.c
 SOURCES_LIST += read_file.c
 SOURCES_LIST += draw.c
 SOURCES_LIST += keys.c
+SOURCES_LIST += colors.c
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
 OBJECTS_DIRECTORY = objects/

@@ -11,6 +11,7 @@
 #include <math.h>
 
 #define MAX(a, b) (a > b ? a : b)
+#define MIN(a,b) (a <= b ? a : b)
 #define MOD(a) (a > 0 ? a : -a)
 
 typedef struct
@@ -23,8 +24,13 @@ typedef struct
     int     color;
     int     shift_x;
     int     shift_y;
-    float   angle;
-    int     is_iso;
+    int    is_iso;
+    float  alpha;
+    float  beta;
+    float  gamma;
+    int    z_max;
+    int    z_min;
+    int    brutal;
 
     void    *mlx_ptr;
     void    *win_ptr;

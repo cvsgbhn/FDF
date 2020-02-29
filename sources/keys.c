@@ -1,17 +1,41 @@
 #include "../includes/fdf.h"
 
-void    tap_iso(int key, fdf *data)
+void    tap_color(int key, fdf *data)
 {
-    if (key == 87)
-        data->is_iso *= -1
+    if (key == 89)
+        data->brutal = 1;
+    if (key == 91)
+        data->brutal = 0;
 }
 
-void    tap_angle(int key, fdf *data)
+void    tap_iso(int key, fdf *data)
 {
-    if (key == 86)
-        data->angle += 0.2;
-    if (key == 88)
-        data->angle -= 0.2;
+    if (key == 84)
+        data->is_iso = 1;
+    if (key == 87)
+        data->is_iso = 0;
+}
+
+void    tap_rotation(int key, fdf *data)
+{
+    if (key == 12)
+        data->alpha += 0.2;
+    if (key == 0)
+        data->alpha -= 0.2;
+    if (key == 13)
+        data->beta += 0.2;
+    if (key == 1)
+        data->beta -= 0.2;
+    if (key == 14)
+        data->gamma += 0.2;
+    if (key == 2)
+        data->gamma -= 0.2;
+    if (key == 49)
+    {
+        data->alpha = 0;
+        data->beta = 0;
+        data->gamma = 0;
+    }
 }
 
 void    tap_vroom(int key, fdf *data)
@@ -54,7 +78,9 @@ int     tap(int key, fdf *data)
     tap_shift(key, data);
     tap_zoom(key, data);
     tap_vroom(key, data);
-    tap_angle(key, data);
+    tap_rotation(key, data);
+    tap_iso(key, data);
+    tap_color(key, data);
     tap_esc(key);
     mlx_clear_window(data->mlx_ptr, data->win_ptr);
     draw(data);

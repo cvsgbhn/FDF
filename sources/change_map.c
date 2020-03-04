@@ -21,7 +21,7 @@ void	rotation_alpha(float *y, int z, t_fdf *data)
 void	rotation_beta(float *x, int z, t_fdf *data)
 {
 	*x = *x * cos(data->beta) + z * sin(data->beta);
-	z = z * sin(data->beta) + z * cos(data->beta);
+	z = -*x * sin(data->beta) + z * cos(data->beta);
 }
 
 void	rotation_gamma(float *x, float *y, t_fdf *data)

@@ -19,6 +19,8 @@ double	percent(int start, int end, int current)
 
 	placement = current - start;
 	distance = end - start;
+	if(placement < 0)
+		placement *= -1;
 	return ((distance == 0) ? 1.0 : (placement / distance));
 }
 
@@ -26,7 +28,7 @@ int		get_color_brutal(int z, t_fdf *data)
 {
 	double	percentage;
 
-	percentage = percent(data->z_min, data->z_max, z);
+	percentage = percent(data->z_min + data->vroom, data->z_max + data->vroom, z + data->vroom);
 	if (percentage < 0.25)
 		return (0x4C9900);
 	if (percentage < 0.5)
@@ -41,7 +43,7 @@ int		get_color_barbie(int z, t_fdf *data)
 {
 	double	percentage;
 
-	percentage = percent(data->z_min, data->z_max, z);
+	percentage = percent(data->z_min + data->vroom, data->z_max + data->vroom, z + data->vroom);
 	if (percentage < 0.25)
 		return (0x66FFB2);
 	if (percentage < 0.5)

@@ -45,9 +45,9 @@ void	tap_shift(int key, t_fdf *data)
 	if (key == 124)
 		data->shift_x += 10;
 	if (key == 83)
-		data->vroom -= 10;
+		data->vroom -= 2;
 	if (key == 85)
-		data->vroom += 10;
+		data->vroom += 2;
 }
 
 void	tap_zoom(int key, t_fdf *data)

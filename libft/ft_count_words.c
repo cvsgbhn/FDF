@@ -33,6 +33,5 @@ int		ft_count_words(char const *s, char c)
 		}
 		index++;
 	}
-	printf("%d\n", counter);
 	return (counter);
 }

@@ -6,7 +6,7 @@
 /*   By: vdanilo <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/29 13:12:38 by vdanilo           #+#    #+#             */
-/*   Updated: 2020/02/29 22:35:34 by vdanilo          ###   ########.fr       */
+/*   Updated: 2020/03/05 15:24:22 by vdanilo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ void	fill_matrix(int *z_line, char *line, t_fdf *data)
 	nums = ft_strsplit(line, ' ');
 	while (nums[i])
 	{
-		if(!ft_isdigit(nums[i][0]) && nums[i][0] != '-')	
-			terminate("Reading error 2");
+		if (!ft_isdigit(nums[i][0]) && nums[i][0] != '-')
+			terminate("Reading error");
 		z_line[i] = ft_atoi(nums[i]);
 		data->z_min = fmin(data->z_min, z_line[i]);
 		data->z_max = fmax(data->z_max, z_line[i]);
@@ -46,7 +46,7 @@ int		*get_height(char *file_name)
 	hw[0] = 0;
 	while (get_next_line(fd, &line))
 	{
-		if(hw[0]==0)
+		if (hw[0] == 0)
 			hw[1] = ft_count_words(line, ' ');
 		hw[0]++;
 		ft_memdel((void **)&line);
@@ -107,7 +107,6 @@ int		read_file(char *filename, t_fdf *data)
 	line = NULL;
 	while (get_next_line(fd, &line))
 	{
-		printf("%s\n", line);
 		fill_matrix(data->z_matrix[++i], line, data);
 		ft_memdel((void **)&line);
 	}
